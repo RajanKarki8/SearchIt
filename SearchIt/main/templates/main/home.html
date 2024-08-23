@@ -1,0 +1,28 @@
+{%extends 'main/base.html'%}
+{%block content%}
+<div class="container-fluid p-5 bg-primary text-white text-center">
+    <h1>SearchIt</h1>
+    <p>This is a search backend with python and django!</p> 
+    <div class="container-fluid p-2 bg-primary text-white text-center">
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{%url 'search'%}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search for Anything" aria-label="Search" name = "query">
+      <button class="btn btn success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      {% for item in items %}
+          <div class="col-sm-4">
+            {% if item.image %}
+            <img src="{{ item.image.url }}" alt="">
+            {% endif %}<hr>
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.about }}</p>
+            <p>${{ item.price }}</p><hr>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+  {%endblock content%}

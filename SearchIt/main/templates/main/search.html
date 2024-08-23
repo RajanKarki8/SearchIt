@@ -1,0 +1,20 @@
+{%extends 'main/base.html'%}
+{%block content%}
+
+<div class ='container mt-5 fs-4'>you search for {{query}}</div>
+<div class="container mt-5">
+    <div class="row">
+      <h2>{{items|length}}, results for {{query}}</h2>
+      {% for item in items %}
+          <div class="col-sm-4">
+            {% if item.image %}
+            <img src="{{ item.image.url }}" alt="">
+            {% endif %}<hr>
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.about }}</p>
+            <p>${{ item.price }}</p><hr>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+{%endblock content%}
